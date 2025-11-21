@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Complete your ZENU presenter profile">
+  <title>Onboarding - ZENU</title>
+  
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <style>
+    .onboarding-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--spacing-xl);
+      background: radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.05) 0%, transparent 70%), #0a0a0a;
+    }
+    
+    .onboarding-card {
+      background: var(--color-bg-secondary);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-2xl);
+      max-width: 700px;
+      width: 100%;
+    }
+    
+    .onboarding-header {
+      text-align: center;
+      margin-bottom: var(--spacing-xl);
+    }
+    
+    .onboarding-logo {
+      width: 60px;
+      height: 60px;
+      background: var(--gradient-primary);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto var(--spacing-md);
+    }
+    
+    .progress-steps {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: var(--spacing-xl);
+      position: relative;
+    }
+    
+    .progress-steps::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.1);
+      z-index: 0;
+    }
+    
+    .progress-step {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--color-bg-elevated);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--color-text-muted);
+      position: relative;
+      z-index: 1;
+      transition: all var(--transition-base);
+    }
+    
+    .progress-step.active {
+      background: var(--color-accent-primary);
+      border-color: var(--color-accent-primary);
+      color: var(--color-bg-primary);
+      box-shadow: 0 0 20px var(--color-accent-glow);
+    }
+    
+    .progress-step.completed {
+      background: var(--color-accent-dark);
+      border-color: var(--color-accent-dark);
+      color: #ffffff;
+    }
+    
+    .onboarding-step {
+      display: none;
+    }
+    
+    .onboarding-step.active {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+    
+    .step-title {
+      font-size: 1.75rem;
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    .step-description {
+      color: var(--color-text-secondary);
+      margin-bottom: var(--spacing-xl);
+    }
+    
+    .checkbox-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .checkbox-item {
+      position: relative;
+    }
+    
+    .checkbox-item input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+    }
+    
+    .checkbox-label {
+      display: block;
+      padding: var(--spacing-sm) var(--spacing-md);
+      background: var(--color-bg-elevated);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      text-align: center;
+      cursor: pointer;
+      transition: all var(--transition-base);
+      font-weight: 500;
+    }
+    
+    .checkbox-item input:checked + .checkbox-label {
+      background: var(--color-accent-glow);
+      border-color: var(--color-accent-primary);
+      color: var(--color-accent-primary);
+    }
+    
+    .radio-group {
+      display: flex;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .radio-item {
+      flex: 1;
+      position: relative;
+    }
+    
+    .radio-item input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+    }
+    
+    .radio-label {
+      display: block;
+      padding: var(--spacing-md);
+      background: var(--color-bg-elevated);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      text-align: center;
+      cursor: pointer;
+      transition: all var(--transition-base);
+    }
+    
+    .radio-item input:checked + .radio-label {
+      background: var(--color-accent-glow);
+      border-color: var(--color-accent-primary);
+      color: var(--color-accent-primary);
+    }
+    
+    .show-structure-builder {
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .structure-item {
+      display: flex;
+      gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-sm);
+      align-items: center;
+    }
+    
+    .structure-item input {
+      flex: 1;
+    }
+    
+    .structure-item button {
+      padding: var(--spacing-xs) var(--spacing-sm);
+    }
+    
+    .onboarding-actions {
+      display: flex;
+      gap: var(--spacing-md);
+      margin-top: var(--spacing-xl);
+    }
+    
+    .onboarding-actions button {
+      flex: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="onboarding-container">
+    <div class="onboarding-card">
+      <div class="onboarding-header">
+        <div class="onboarding-logo">🎙️</div>
+        <h1>Welcome to ZENU</h1>
+        <p class="text-secondary">Let's set up your presenter profile</p>
+      </div>
+      
+      <!-- Progress Steps -->
+      <div class="progress-steps">
+        <div class="progress-step active" data-step="1">1</div>
+        <div class="progress-step" data-step="2">2</div>
+        <div class="progress-step" data-step="3">3</div>
+        <div class="progress-step" data-step="4">4</div>
+        <div class="progress-step" data-step="5">5</div>
+      </div>
+      
+      <div id="error-message" class="error-message"></div>
+      <div id="success-message" class="success-message"></div>
+      
+      <!-- Step 1: Language Preferences -->
+      <div class="onboarding-step active" data-step="1">
+        <h2 class="step-title">Language Preferences</h2>
+        <p class="step-description">Select the languages you use on air</p>
+        
+        <div class="checkbox-group">
+          <div class="checkbox-item">
+            <input type="checkbox" id="lang-english" value="English" checked>
+            <label class="checkbox-label" for="lang-english">English</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" id="lang-pidgin" value="Pidgin">
+            <label class="checkbox-label" for="lang-pidgin">Pidgin</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" id="lang-yoruba" value="Yoruba">
+            <label class="checkbox-label" for="lang-yoruba">Yoruba</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" id="lang-igbo" value="Igbo">
+            <label class="checkbox-label" for="lang-igbo">Igbo</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" id="lang-hausa" value="Hausa">
+            <label class="checkbox-label" for="lang-hausa">Hausa</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" id="lang-mixed" value="Mixed">
+            <label class="checkbox-label" for="lang-mixed">Mixed</label>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Step 2: Speaking Characteristics -->
+      <div class="onboarding-step" data-step="2">
+        <h2 class="step-title">Speaking Style</h2>
+        <p class="step-description">Tell us about your on-air personality</p>
+        
+        <div class="form-group">
+          <label class="form-label">Speaking Speed</label>
+          <div class="radio-group">
+            <div class="radio-item">
+              <input type="radio" id="speed-slow" name="speaking-speed" value="slow">
+              <label class="radio-label" for="speed-slow">
+                <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🐢</div>
+                Slow
+              </label>
+            </div>
+            <div class="radio-item">
+              <input type="radio" id="speed-medium" name="speaking-speed" value="medium" checked>
+              <label class="radio-label" for="speed-medium">
+                <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🚶</div>
+                Medium
+              </label>
+            </div>
+            <div class="radio-item">
+              <input type="radio" id="speed-fast" name="speaking-speed" value="fast">
+              <label class="radio-label" for="speed-fast">
+                <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🏃</div>
+                Fast
+              </label>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Formality Level</label>
+          <div class="radio-group">
+            <div class="radio-item">
+              <input type="radio" id="formal-casual" name="formality" value="casual">
+              <label class="radio-label" for="formal-casual">Casual</label>
+            </div>
+            <div class="radio-item">
+              <input type="radio" id="formal-professional" name="formality" value="professional" checked>
+              <label class="radio-label" for="formal-professional">Professional</label>
+            </div>
+            <div class="radio-item">
+              <input type="radio" id="formal-mixed" name="formality" value="mixed">
+              <label class="radio-label" for="formal-mixed">Mixed</label>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Tone Description</label>
+          <textarea 
+            id="tone-description" 
+            class="form-textarea" 
+            placeholder="Describe your on-air personality (e.g., energetic, warm, authoritative, humorous)"
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+      
+      <!-- Step 3: Signature Phrases -->
+      <div class="onboarding-step" data-step="3">
+        <h2 class="step-title">Signature Phrases</h2>
+        <p class="step-description">Your unique intro and outro</p>
+        
+        <div class="form-group">
+          <label class="form-label">Signature Intro</label>
+          <textarea 
+            id="signature-intro" 
+            class="form-textarea" 
+            placeholder="e.g., 'Good morning everyone! You're tuned to the best morning show in town...'"
+            rows="3"
+          ></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Signature Outro</label>
+          <textarea 
+            id="signature-outro" 
+            class="form-textarea" 
+            placeholder="e.g., 'That's all for today folks! Stay blessed and I'll catch you tomorrow...'"
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+      
+      <!-- Step 4: Topic Preferences -->
+      <div class="onboarding-step" data-step="4">
+        <h2 class="step-title">Topic Preferences</h2>
+        <p class="step-description">What topics do you cover most?</p>
+        
+        <div class="checkbox-group">
+          <div class="checkbox-item">
+            <input type="checkbox" id="topic-politics" value="politics">
+            <label class="checkbox-label" for="topic-politics">Politics</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" id="topic-sports" value="sports">
+            <label class="checkbox-label" for="topic-sports">Sports</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" id="topic-entertainment" value="entertainment">
+            <label class="checkbox-label" for="topic-entertainment">Entertainment</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" id="topic-business" value="business">
+            <label class="checkbox-label" for="topic-business">Business</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" id="topic-technology" value="technology">
+            <label class="checkbox-label" for="topic-technology">Technology</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" id="topic-health" value="health">
+            <label class="checkbox-label" for="topic-health">Health</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" id="topic-education" value="education">
+            <label class="checkbox-label" for="topic-education">Education</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" id="topic-local" value="local">
+            <label class="checkbox-label" for="topic-local">Local News</label>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Step 5: Show Structure -->
+      <div class="onboarding-step" data-step="5">
+        <h2 class="step-title">Show Structure</h2>
+        <p class="step-description">Define your typical show flow</p>
+        
+        <div id="show-structure-list" class="show-structure-builder">
+          <!-- Structure items will be added here -->
+        </div>
+        
+        <button type="button" class="btn btn-secondary" onclick="addStructureItem()">
+          + Add Section
+        </button>
+      </div>
+      
+      <!-- Navigation -->
+      <div class="onboarding-actions">
+        <button type="button" class="btn btn-ghost" id="prev-btn" onclick="previousStep()" style="display: none;">
+          Previous
+        </button>
+        <button type="button" class="btn btn-primary" id="next-btn" onclick="nextStep()">
+          Next
+        </button>
+        <button type="button" class="btn btn-primary" id="finish-btn" onclick="finishOnboarding()" style="display: none;">
+          Complete Setup
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <script src="/js/auth.js"></script>
+  <script>
+    let currentStep = 1;
+    const totalSteps = 5;
+    let showStructure = [
+      { section: 'intro', duration: 30, order: 1 },
+      { section: 'weather', duration: 60, order: 2 },
+      { section: 'trending_news', duration: 180, order: 3 },
+      { section: 'global_headlines', duration: 120, order: 4 },
+      { section: 'human_interest', duration: 90, order: 5 },
+      { section: 'traffic', duration: 60, order: 6 },
+      { section: 'outro', duration: 30, order: 7 }
+    ];
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!window.ZenuAuth.requireAuth()) return;
+      renderShowStructure();
+    });
+    
+    function nextStep() {
+      if (currentStep < totalSteps) {
+        currentStep++;
+        updateStepDisplay();
+      }
+    }
+    
+    function previousStep() {
+      if (currentStep > 1) {
+        currentStep--;
+        updateStepDisplay();
+      }
+    }
+    
+    function updateStepDisplay() {
+      // Update step content
+      document.querySelectorAll('.onboarding-step').forEach(step => {
+        step.classList.toggle('active', parseInt(step.dataset.step) === currentStep);
+      });
+      
+      // Update progress
+      document.querySelectorAll('.progress-step').forEach(step => {
+        const stepNum = parseInt(step.dataset.step);
+        step.classList.toggle('active', stepNum === currentStep);
+        step.classList.toggle('completed', stepNum < currentStep);
+      });
+      
+      // Update buttons
+      document.getElementById('prev-btn').style.display = currentStep > 1 ? 'block' : 'none';
+      document.getElementById('next-btn').style.display = currentStep < totalSteps ? 'block' : 'none';
+      document.getElementById('finish-btn').style.display = currentStep === totalSteps ? 'block' : 'none';
+    }
+    
+    function renderShowStructure() {
+      const container = document.getElementById('show-structure-list');
+      container.innerHTML = showStructure.map((item, index) => `
+        <div class="structure-item">
+          <input type="text" class="form-input" value="${item.section}" 
+                 onchange="updateStructureSection(${index}, this.value)" 
+                 placeholder="Section name">
+          <input type="number" class="form-input" value="${item.duration}" 
+                 onchange="updateStructureDuration(${index}, this.value)" 
+                 placeholder="Duration (sec)" style="max-width: 120px;">
+          <button type="button" class="btn btn-ghost btn-sm" onclick="removeStructureItem(${index})">×</button>
+        </div>
+      `).join('');
+    }
+    
+    function addStructureItem() {
+      showStructure.push({
+        section: 'new_section',
+        duration: 60,
+        order: showStructure.length + 1
+      });
+      renderShowStructure();
+    }
+    
+    function removeStructureItem(index) {
+      showStructure.splice(index, 1);
+      showStructure.forEach((item, i) => item.order = i + 1);
+      renderShowStructure();
+    }
+    
+    function updateStructureSection(index, value) {
+      showStructure[index].section = value;
+    }
+    
+    function updateStructureDuration(index, value) {
+      showStructure[index].duration = parseInt(value) || 60;
+    }
+    
+    async function finishOnboarding() {
+      try {
+        const finishBtn = document.getElementById('finish-btn');
+        window.ZenuAuth.showLoading(finishBtn);
+        
+        // Collect all data
+        const profileData = {
+          preferredLanguage: getSelectedCheckboxes('input[id^="lang-"]:checked'),
+          speakingSpeed: document.querySelector('input[name="speaking-speed"]:checked')?.value || 'medium',
+          formalityLevel: document.querySelector('input[name="formality"]:checked')?.value || 'professional',
+          toneDescription: document.getElementById('tone-description').value,
+          signatureIntro: document.getElementById('signature-intro').value,
+          signatureOutro: document.getElementById('signature-outro').value,
+          topicPreferences: getSelectedCheckboxes('input[id^="topic-"]:checked'),
+          showStructure: showStructure,
+          onboardingCompleted: true
+        };
+        
+        // Save profile
+        const response = await fetch(`${window.ZenuAuth.API_BASE_URL}/profile`, {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${window.ZenuAuth.getToken()}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(profileData)
+        });
+        
+        const data = await response.json();
+        
+        if (!response.ok) {
+          throw new Error(data.message || 'Failed to save profile');
+        }
+        
+        window.ZenuAuth.showSuccess('Profile completed successfully!');
+        
+        setTimeout(() => {
+          window.location.href = '/dashboard';
+        }, 1500);
+        
+      } catch (error) {
+        console.error('Onboarding error:', error);
+        window.ZenuAuth.hideLoading(document.getElementById('finish-btn'));
+        window.ZenuAuth.showError(error.message);
+      }
+    }
+    
+    function getSelectedCheckboxes(selector) {
+      return Array.from(document.querySelectorAll(selector)).map(cb => cb.value);
+    }
+  </script>
+</body>
+</html>
