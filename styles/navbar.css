@@ -47,15 +47,10 @@
 .logo-icon {
   width: 40px;
   height: 40px;
-  /* background: var(--gradient-primary); */
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--white);
-  font-weight: 700;
-  font-size: var(--text-xl);
-  box-shadow: var(--shadow-glow);
 }
 
 .logo-text {
@@ -127,7 +122,7 @@
   display: block;
   width: 25px;
   height: 3px;
-  background: var(--dark-navy);
+  background: var(--primary-color);
   border-radius: var(--radius-sm);
   transition: all var(--transition-base);
 }

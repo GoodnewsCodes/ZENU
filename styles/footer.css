@@ -47,23 +47,18 @@
   gap: var(--space-sm);
   font-size: var(--text-2xl);
   font-weight: 700;
-  color: var(--white);
+  color: var(--primary-color);
   text-decoration: none;
   margin-bottom: var(--space-sm);
 }
 
 .footer-logo-icon {
   width: 45px;
-  height: 45px;
-  background: var(--gradient-primary);
+  height: 45px;  
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--white);
-  font-weight: 700;
-  font-size: var(--text-xl);
-  box-shadow: var(--shadow-glow);
 }
 
 .footer-description {
