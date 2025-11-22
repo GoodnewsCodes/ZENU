@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - ZENU</title>
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="stylesheet" href="styles/footer.css">
+    <link rel="stylesheet" href="styles/profile.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23E30B5C'><path d='M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z'/><path d='M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z'/></svg>">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <div class="logo-icon">Z</div>
+                <span class="logo-text">ZENU</span>
+            </a>
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="index.html" class="navbar-link">Home</a></li>
+                <li><a href="dashboard.html" class="navbar-link">Dashboard</a></li>
+                <li><a href="news-curator.html" class="navbar-link">News Curator</a></li>
+                <li><a href="script-editor.html" class="navbar-link">Script Editor</a></li>
+                <li><a href="teleprompter.html" class="navbar-link">Teleprompter</a></li>
+                <li><a href="profile.html" class="navbar-link active">Profile</a></li>
+            </ul>
+            <button class="navbar-toggle" id="navbarToggle"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <div class="container" style="padding-top: 100px; min-height: 80vh;">
+        <h1>Profile Settings</h1>
+        <p class="text-center" style="color: var(--medium-gray); margin: 2rem 0;">Manage your presenter profile and preferences.</p>
+        <div class="card" style="max-width: 800px; margin: 0 auto;">
+            <h3>Coming Soon</h3>
+            <p>The Profile page is under development. You'll soon be able to:</p>
+            <ul style="margin-left: 2rem; color: var(--medium-gray);">
+                <li>Update your personal information</li>
+                <li>Manage voice style preferences</li>
+                <li>Configure integrations (Email, Slack, WhatsApp)</li>
+                <li>View account settings</li>
+            </ul>
+            <div style="margin-top: 2rem;">
+                <a href="dashboard.html" class="btn btn-primary">Back to Dashboard</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/navigation.js"></script>
+    <script src="scripts/profile.js"></script>
+</body>
+</html>

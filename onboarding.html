@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create your ZENU presenter profile and start generating professional radio scripts">
+    <title>Get Started - ZENU Onboarding</title>
+    
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="stylesheet" href="styles/footer.css">
+    <link rel="stylesheet" href="styles/onboarding.css">
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23E30B5C'><path d='M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z'/><path d='M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z'/></svg>">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <div class="logo-icon">Z</div>
+                <span class="logo-text">ZENU</span>
+            </a>
+            
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="index.html" class="navbar-link">Home</a></li>
+                <li><a href="dashboard.html" class="navbar-link">Dashboard</a></li>
+                <li><a href="profile.html" class="navbar-link">Profile</a></li>
+            </ul>
+            
+            <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Onboarding Container -->
+    <div class="onboarding-wrapper">
+        <div class="container">
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-steps">
+                    <div class="progress-step active" data-step="1">
+                        <div class="step-circle">1</div>
+                        <div class="step-label">Profile</div>
+                    </div>
+                    <div class="progress-step" data-step="2">
+                        <div class="step-circle">2</div>
+                        <div class="step-label">Voice Style</div>
+                    </div>
+                    <div class="progress-step" data-step="3">
+                        <div class="step-circle">3</div>
+                        <div class="step-label">Preferences</div>
+                    </div>
+                    <div class="progress-step" data-step="4">
+                        <div class="step-circle">4</div>
+                        <div class="step-label">Voice Sample</div>
+                    </div>
+                    <div class="progress-step" data-step="5">
+                        <div class="step-circle">5</div>
+                        <div class="step-label">Complete</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Steps -->
+            <div class="onboarding-form">
+                <!-- Step 1: Profile Information -->
+                <div class="form-step active" data-step="1">
+                    <div class="step-header">
+                        <h2 class="step-title">Let's Get to Know You</h2>
+                        <p class="step-description">Tell us about yourself and your show</p>
+                    </div>
+                    
+                    <div class="form-content">
+                        <div class="form-group">
+                            <label for="fullName" class="form-label">Full Name *</label>
+                            <input type="text" id="fullName" class="form-input" placeholder="John Doe" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address *</label>
+                            <input type="email" id="email" class="form-input" placeholder="john@example.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="showName" class="form-label">Show Name *</label>
+                            <input type="text" id="showName" class="form-input" placeholder="Morning Drive" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="station" class="form-label">Radio Station</label>
+                            <input type="text" id="station" class="form-input" placeholder="Cool FM Lagos">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bio" class="form-label">Brief Bio</label>
+                            <textarea id="bio" class="form-textarea" placeholder="Tell us about your broadcasting experience..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Voice Style -->
+                <div class="form-step" data-step="2">
+                    <div class="step-header">
+                        <h2 class="step-title">Define Your Voice Style</h2>
+                        <p class="step-description">Help ZENU understand your unique presenting style</p>
+                    </div>
+                    
+                    <div class="form-content">
+                        <div class="form-group">
+                            <label class="form-label">Tone of Voice *</label>
+                            <div class="radio-grid">
+                                <label class="radio-card">
+                                    <input type="radio" name="tone" value="professional" required>
+                                    <div class="radio-content">
+                                        <div class="radio-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M8 7l4-4 4 4M8 17h8"/></svg></div>
+                                        <div class="radio-title">Professional</div>
+                                        <div class="radio-desc">Formal and authoritative</div>
+                                    </div>
+                                </label>
+                                
+                                <label class="radio-card">
+                                    <input type="radio" name="tone" value="friendly">
+                                    <div class="radio-content">
+                                        <div class="radio-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg></div>
+                                        <div class="radio-title">Friendly</div>
+                                        <div class="radio-desc">Warm and conversational</div>
+                                    </div>
+                                </label>
+                                
+                                <label class="radio-card">
+                                    <input type="radio" name="tone" value="energetic">
+                                    <div class="radio-content">
+                                        <div class="radio-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/></svg></div>
+                                        <div class="radio-title">Energetic</div>
+                                        <div class="radio-desc">Upbeat and dynamic</div>
+                                    </div>
+                                </label>
+                                
+                                <label class="radio-card">
+                                    <input type="radio" name="tone" value="casual">
+                                    <div class="radio-content">
+                                        <div class="radio-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+                                        <div class="radio-title">Casual</div>
+                                        <div class="radio-desc">Relaxed and laid-back</div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Personality Traits (Select all that apply)</label>
+                            <div class="checkbox-grid">
+                                <label class="checkbox-card">
+                                    <input type="checkbox" name="traits" value="humorous">
+                                    <span class="checkbox-label">Humorous</span>
+                                </label>
+                                <label class="checkbox-card">
+                                    <input type="checkbox" name="traits" value="informative">
+                                    <span class="checkbox-label">Informative</span>
+                                </label>
+                                <label class="checkbox-card">
+                                    <input type="checkbox" name="traits" value="empathetic">
+                                    <span class="checkbox-label">Empathetic</span>
+                                </label>
+                                <label class="checkbox-card">
+                                    <input type="checkbox" name="traits" value="analytical">
+                                    <span class="checkbox-label">Analytical</span>
+                                </label>
+                                <label class="checkbox-card">
+                                    <input type="checkbox" name="traits" value="storyteller">
+                                    <span class="checkbox-label">Storyteller</span>
+                                </label>
+                                <label class="checkbox-card">
+                                    <input type="checkbox" name="traits" value="motivational">
+                                    <span class="checkbox-label">Motivational</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Preferences -->
+                <div class="form-step" data-step="3">
+                    <div class="step-header">
+                        <h2 class="step-title">Set Your Preferences</h2>
+                        <p class="step-description">Customize your ZENU experience</p>
+                    </div>
+                    
+                    <div class="form-content">
+                        <div class="form-group">
+                            <label for="language" class="form-label">Primary Language *</label>
+                            <select id="language" class="form-select" required>
+                                <option value="">Select language</option>
+                                <option value="en">English</option>
+                                <option value="yo">Yoruba</option>
+                                <option value="ig">Igbo</option>
+                                <option value="ha">Hausa</option>
+                                <option value="pi">Pidgin English</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="showTemplate" class="form-label">Show Template *</label>
+                            <select id="showTemplate" class="form-select" required>
+                                <option value="">Select template</option>
+                                <option value="morning">Morning Show</option>
+                                <option value="news">News Bulletin</option>
+                                <option value="drive">Drive Time</option>
+                                <option value="talk">Talk Show</option>
+                                <option value="music">Music Show</option>
+                                <option value="sports">Sports Commentary</option>
+                                <option value="custom">Custom Format</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="scriptLength" class="form-label">Typical Script Length</label>
+                            <select id="scriptLength" class="form-select">
+                                <option value="short">Short (5-10 minutes)</option>
+                                <option value="medium" selected>Medium (15-30 minutes)</option>
+                                <option value="long">Long (45-60 minutes)</option>
+                                <option value="custom">Custom</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">News Sources (Select your preferred sources)</label>
+                            <div class="checkbox-grid">
+                                <label class="checkbox-card">
+                                    <input type="checkbox" name="sources" value="vanguard" checked>
+                                    <span class="checkbox-label">Vanguard</span>
+                                </label>
+                                <label class="checkbox-card">
+                                    <input type="checkbox" name="sources" value="punch" checked>
+                                    <span class="checkbox-label">Punch</span>
+                                </label>
+                                <label class="checkbox-card">
+                                    <input type="checkbox" name="sources" value="arise">
+                                    <span class="checkbox-label">Arise News</span>
+                                </label>
+                                <label class="checkbox-card">
+                                    <input type="checkbox" name="sources" value="bbc">
+                                    <span class="checkbox-label">BBC</span>
+                                </label>
+                                <label class="checkbox-card">
+                                    <input type="checkbox" name="sources" value="custom">
+                                    <span class="checkbox-label">Custom RSS</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Voice Sample -->
+                <div class="form-step" data-step="4">
+                    <div class="step-header">
+                        <h2 class="step-title">Upload Voice Sample (Optional)</h2>
+                        <p class="step-description">Help ZENU learn your voice for better personalization</p>
+                    </div>
+                    
+                    <div class="form-content">
+                        <div class="upload-area" id="uploadArea">
+                            <div class="upload-icon">
+                                <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                                    <path d="M32 16V40M32 16L24 24M32 16L40 24M16 40V48C16 49.0609 16.4214 50.0783 17.1716 50.8284C17.9217 51.5786 18.9391 52 20 52H44C45.0609 52 46.0783 51.5786 46.8284 50.8284C47.5786 50.0783 48 49.0609 48 48V40" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <h3 class="upload-title">Drop your audio file here</h3>
+                            <p class="upload-description">or click to browse</p>
+                            <p class="upload-hint">Supported formats: MP3, WAV, M4A (Max 10MB)</p>
+                            <input type="file" id="voiceFile" accept="audio/*" hidden>
+                        </div>
+                        
+                        <div class="uploaded-file" id="uploadedFile" style="display: none;">
+                            <div class="file-info">
+                                <div class="file-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M9 18V5l12-2v13M9 13c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3z"/></svg></div>
+                                <div class="file-details">
+                                    <div class="file-name" id="fileName"></div>
+                                    <div class="file-size" id="fileSize"></div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn-remove" id="removeFile">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <div class="form-group mt-xl">
+                            <label class="form-label">
+                                <input type="checkbox" id="skipVoice">
+                                Skip for now (You can add this later in your profile)
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5: Complete -->
+                <div class="form-step" data-step="5">
+                    <div class="step-header text-center">
+                        <div class="success-icon">
+                            <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                                <circle cx="40" cy="40" r="38" stroke="currentColor" stroke-width="4"/>
+                                <path d="M25 40L35 50L55 30" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h2 class="step-title">You're All Set!</h2>
+                        <p class="step-description">Your ZENU profile has been created successfully</p>
+                    </div>
+                    
+                    <div class="completion-summary">
+                        <div class="summary-card">
+                            <h3>What's Next?</h3>
+                            <ul class="next-steps">
+                                <li>
+                                    <div class="step-number">1</div>
+                                    <span>Explore your personalized dashboard</span>
+                                </li>
+                                <li>
+                                    <div class="step-number">2</div>
+                                    <span>Curate news from your selected sources</span>
+                                </li>
+                                <li>
+                                    <div class="step-number">3</div>
+                                    <span>Generate your first AI-powered script</span>
+                                </li>
+                                <li>
+                                    <div class="step-number">4</div>
+                                    <span>Use the teleprompter for your broadcast</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="form-navigation">
+                    <button type="button" class="btn btn-secondary" id="prevBtn" style="display: none;">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Previous
+                    </button>
+                    
+                    <button type="button" class="btn btn-primary" id="nextBtn">
+                        Next
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    
+                    <a href="dashboard.html" class="btn btn-primary btn-lg" id="completeBtn" style="display: none;">
+                        Go to Dashboard
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/navigation.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/onboarding.js"></script>
+</body>
+</html>

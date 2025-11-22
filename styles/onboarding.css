@@ -1,0 +1,435 @@
+/* ========================================
+   ZENU - Onboarding Styles
+   ======================================== */
+
+.onboarding-wrapper {
+  min-height: 100vh;
+  padding: 100px 0 var(--space-3xl);
+  background: linear-gradient(135deg, var(--off-white) 0%, var(--white) 100%);
+}
+
+/* Progress Container */
+.progress-container {
+  max-width: 900px;
+  margin: 0 auto var(--space-3xl);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background: var(--light-gray);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-bottom: var(--space-2xl);
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--gradient-primary);
+  width: 20%;
+  transition: width var(--transition-slow);
+}
+
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  flex: 1;
+  position: relative;
+}
+
+.step-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 3px solid var(--light-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: var(--medium-gray);
+  transition: all var(--transition-base);
+  position: relative;
+  z-index: 2;
+}
+
+.progress-step.active .step-circle {
+  background: var(--gradient-primary);
+  border-color: var(--primary-color);
+  color: var(--white);
+  box-shadow: var(--shadow-glow);
+}
+
+.progress-step.completed .step-circle {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--white);
+}
+
+.step-label {
+  font-size: var(--text-sm);
+  color: var(--medium-gray);
+  font-weight: 500;
+  text-align: center;
+}
+
+.progress-step.active .step-label {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Onboarding Form */
+.onboarding-form {
+  max-width: 700px;
+  margin: 0 auto;
+  background: var(--white);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-3xl);
+  box-shadow: var(--shadow-xl);
+  border: 1px solid rgba(227, 11, 92, 0.1);
+}
+
+.form-step {
+  display: none;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.form-step.active {
+  display: block;
+}
+
+.step-header {
+  margin-bottom: var(--space-2xl);
+  text-align: center;
+}
+
+.step-title {
+  font-size: var(--text-3xl);
+  color: var(--dark-navy);
+  margin-bottom: var(--space-sm);
+}
+
+.step-description {
+  font-size: var(--text-lg);
+  color: var(--medium-gray);
+}
+
+.form-content {
+  margin-bottom: var(--space-2xl);
+}
+
+/* Radio Cards */
+.radio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+}
+
+.radio-card {
+  position: relative;
+  cursor: pointer;
+}
+
+.radio-card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+
+.radio-content {
+  padding: var(--space-lg);
+  border: 2px solid var(--light-gray);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  transition: all var(--transition-base);
+  background: var(--white);
+}
+
+.radio-card:hover .radio-content {
+  border-color: var(--primary-color);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.radio-card input[type="radio"]:checked + .radio-content {
+  border-color: var(--primary-color);
+  background: var(--gradient-overlay);
+  box-shadow: var(--shadow-glow);
+}
+
+.radio-icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-sm);
+}
+
+.radio-title {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--dark-navy);
+  margin-bottom: var(--space-xs);
+}
+
+.radio-desc {
+  font-size: var(--text-sm);
+  color: var(--medium-gray);
+}
+
+/* Checkbox Cards */
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+}
+
+.checkbox-card {
+  position: relative;
+  cursor: pointer;
+  display: block;
+}
+
+.checkbox-card input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+}
+
+.checkbox-label {
+  display: block;
+  padding: var(--space-md);
+  border: 2px solid var(--light-gray);
+  border-radius: var(--radius-md);
+  text-align: center;
+  transition: all var(--transition-base);
+  background: var(--white);
+  font-weight: 500;
+}
+
+.checkbox-card:hover .checkbox-label {
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.checkbox-card input[type="checkbox"]:checked + .checkbox-label {
+  border-color: var(--primary-color);
+  background: var(--gradient-overlay);
+  color: var(--primary-color);
+}
+
+/* Upload Area */
+.upload-area {
+  border: 3px dashed var(--light-gray);
+  border-radius: var(--radius-xl);
+  padding: var(--space-3xl);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  background: var(--off-white);
+}
+
+.upload-area:hover {
+  border-color: var(--primary-color);
+  background: var(--gradient-overlay);
+}
+
+.upload-icon {
+  color: var(--primary-color);
+  margin-bottom: var(--space-lg);
+}
+
+.upload-title {
+  font-size: var(--text-xl);
+  color: var(--dark-navy);
+  margin-bottom: var(--space-sm);
+}
+
+.upload-description {
+  font-size: var(--text-base);
+  color: var(--medium-gray);
+  margin-bottom: var(--space-xs);
+}
+
+.upload-hint {
+  font-size: var(--text-sm);
+  color: var(--medium-gray);
+}
+
+/* Uploaded File */
+.uploaded-file {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-lg);
+  background: var(--gradient-overlay);
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--primary-color);
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.file-icon {
+  font-size: 2rem;
+}
+
+.file-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.file-name {
+  font-weight: 600;
+  color: var(--dark-navy);
+}
+
+.file-size {
+  font-size: var(--text-sm);
+  color: var(--medium-gray);
+}
+
+.btn-remove {
+  background: transparent;
+  border: none;
+  color: var(--primary-color);
+  cursor: pointer;
+  padding: var(--space-sm);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+}
+
+.btn-remove:hover {
+  background: rgba(227, 11, 92, 0.1);
+}
+
+/* Success Icon */
+.success-icon {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto var(--space-xl);
+  color: var(--primary-color);
+  animation: scaleIn 0.5s ease-out;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Completion Summary */
+.completion-summary {
+  margin-top: var(--space-2xl);
+}
+
+.summary-card {
+  background: var(--gradient-overlay);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl);
+  border: 1px solid var(--primary-color);
+}
+
+.summary-card h3 {
+  font-size: var(--text-2xl);
+  color: var(--dark-navy);
+  margin-bottom: var(--space-lg);
+}
+
+.next-steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.next-steps li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background: var(--white);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+}
+
+.next-steps li:hover {
+  transform: translateX(10px);
+  box-shadow: var(--shadow-md);
+}
+
+.next-steps .step-number {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* Form Navigation */
+.form-navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--light-gray);
+}
+
+.form-navigation .btn {
+  min-width: 150px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .onboarding-wrapper {
+    padding: 80px 0 var(--space-2xl);
+  }
+  
+  .progress-steps {
+    gap: var(--space-xs);
+  }
+  
+  .step-circle {
+    width: 40px;
+    height: 40px;
+    font-size: var(--text-sm);
+  }
+  
+  .step-label {
+    font-size: var(--text-xs);
+  }
+  
+  .onboarding-form {
+    padding: var(--space-xl);
+  }
+  
+  .radio-grid,
+  .checkbox-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-navigation {
+    flex-direction: column-reverse;
+  }
+  
+  .form-navigation .btn {
+    width: 100%;
+  }
+}
