@@ -24,6 +24,9 @@ function initHeroCanvas() {
     const ctx = canvas.getContext('2d');
     let particles = [];
     let animationFrameId;
+    let mouseX = 0;
+    let mouseY = 0;
+    let mouseActive = false;
     
     // Set canvas size
     function resizeCanvas() {
@@ -34,43 +37,93 @@ function initHeroCanvas() {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
     
-    // Particle class
-    class Particle {
+    // Track mouse movement
+    document.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouseX = e.clientX - rect.left;
+        mouseY = e.clientY - rect.top;
+        mouseActive = true;
+    });
+    
+    document.addEventListener('mouseleave', () => {
+        mouseActive = false;
+    });
+    
+    // Radio wave particle class
+    class RadioWave {
         constructor() {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 3 + 1;
-            this.speedX = Math.random() * 0.5 - 0.25;
-            this.speedY = Math.random() * 0.5 - 0.25;
+            this.vx = Math.random() * 0.5 - 0.25;
+            this.vy = Math.random() * 0.5 - 0.25;
             this.opacity = Math.random() * 0.5 + 0.2;
+            this.pulsePhase = Math.random() * Math.PI * 2;
+            this.pulseSpeed = 0.05;
+            this.size = Math.random() * 2 + 1;
+            this.waveRadius = 0;
+            this.maxWaveRadius = 20 + Math.random() * 10;
         }
         
         update() {
-            this.x += this.speedX;
-            this.y += this.speedY;
+            // Base movement
+            this.x += this.vx;
+            this.y += this.vy;
+            
+            // Attraction to mouse when active
+            if (mouseActive) {
+                const dx = mouseX - this.x;
+                const dy = mouseY - this.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < 200) {
+                    const angle = Math.atan2(dy, dx);
+                    const force = 0.02 * (1 - distance / 200);
+                    this.vx += Math.cos(angle) * force;
+                    this.vy += Math.sin(angle) * force;
+                }
+            }
+            
+            // Damping
+            this.vx *= 0.99;
+            this.vy *= 0.99;
             
             // Wrap around edges
             if (this.x > canvas.width) this.x = 0;
             if (this.x < 0) this.x = canvas.width;
             if (this.y > canvas.height) this.y = 0;
             if (this.y < 0) this.y = canvas.height;
+            
+            // Update pulse
+            this.pulsePhase += this.pulseSpeed;
+            this.waveRadius = this.maxWaveRadius * Math.sin(this.pulsePhase);
+            if (this.waveRadius < 0) this.waveRadius = 0;
         }
         
         draw() {
+            // Draw core particle
             ctx.fillStyle = `rgba(227, 11, 92, ${this.opacity})`;
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
             ctx.fill();
+            
+            // Draw radio wave rings
+            if (this.waveRadius > 0) {
+                ctx.strokeStyle = `rgba(227, 11, 92, ${this.opacity * 0.4 * (1 - this.waveRadius / this.maxWaveRadius)})`;
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.waveRadius, 0, Math.PI * 2);
+                ctx.stroke();
+            }
         }
     }
     
     // Create particles
     function createParticles() {
-        const particleCount = Math.min(50, Math.floor(canvas.width / 20));
+        const particleCount = Math.min(40, Math.floor(canvas.width / 25));
         particles = [];
         
         for (let i = 0; i < particleCount; i++) {
-            particles.push(new Particle());
+            particles.push(new RadioWave());
         }
     }
     
@@ -84,7 +137,7 @@ function initHeroCanvas() {
             particle.draw();
         });
         
-        // Draw connections
+        // Draw connections with dynamic opacity based on mouse proximity
         particles.forEach((particle, i) => {
             particles.slice(i + 1).forEach(otherParticle => {
                 const dx = particle.x - otherParticle.x;
@@ -92,7 +145,20 @@ function initHeroCanvas() {
                 const distance = Math.sqrt(dx * dx + dy * dy);
                 
                 if (distance < 150) {
-                    ctx.strokeStyle = `rgba(227, 11, 92, ${0.1 * (1 - distance / 150)})`;
+                    let connectionOpacity = 0.1 * (1 - distance / 150);
+                    
+                    // Enhance connections near mouse
+                    if (mouseActive) {
+                        const toMouseX = (particle.x + otherParticle.x) / 2 - mouseX;
+                        const toMouseY = (particle.y + otherParticle.y) / 2 - mouseY;
+                        const distToMouse = Math.sqrt(toMouseX * toMouseX + toMouseY * toMouseY);
+                        
+                        if (distToMouse < 200) {
+                            connectionOpacity += 0.15 * (1 - distToMouse / 200);
+                        }
+                    }
+                    
+                    ctx.strokeStyle = `rgba(227, 11, 92, ${Math.min(connectionOpacity, 0.5)})`;
                     ctx.lineWidth = 1;
                     ctx.beginPath();
                     ctx.moveTo(particle.x, particle.y);
@@ -140,7 +206,7 @@ function initScrollAnimations() {
     elementsToAnimate.forEach((el, index) => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
-        el.style.transition = `opacity 0.6s ease-out ${index * 0.1}s, transform 0.6s ease-out ${index * 0.1}s`;
+        el.style.transition = `opacity 3s ease-out ${index * 1}s, transform 2s ease-out ${index * 1}s`;
         observer.observe(el);
     });
 }

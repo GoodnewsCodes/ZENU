@@ -481,15 +481,15 @@ img {
 }
 
 .fade-in {
-  animation: fadeIn 0.6s ease-out;
+  animation: fadeIn 1.2s ease-out 0.3s both;
 }
 
 .slide-in-left {
-  animation: slideInLeft 0.6s ease-out;
+  animation: slideInLeft 1.2s ease-out 0.3s both;
 }
 
 .slide-in-right {
-  animation: slideInRight 0.6s ease-out;
+  animation: slideInRight 1.2s ease-out 0.5s both;
 }
 
 /* ========================================
