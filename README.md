@@ -180,6 +180,7 @@ Then navigate to `http://localhost:8000`
 ### AI Script Generation
 
 The script generation feature uses AI to create personalized content based on:
+
 - Your voice style preferences
 - Selected news items
 - Show template structure
@@ -188,6 +189,7 @@ The script generation feature uses AI to create personalized content based on:
 ### News Curation
 
 Fetch news from multiple sources:
+
 - **Vanguard** - Nigerian news
 - **Punch** - Nigerian news
 - **Arise News** - International news
@@ -196,6 +198,7 @@ Fetch news from multiple sources:
 ### Voice Personalization
 
 Upload voice samples to help ZENU:
+
 - Match your tone and style
 - Use your common phrases
 - Adapt to your presenting personality
@@ -203,6 +206,7 @@ Upload voice samples to help ZENU:
 ### Export Options
 
 Export scripts to:
+
 - **PDF** - For printing or archiving
 - **Email** - Send to yourself or team
 - **Slack** - Share with production team
@@ -223,7 +227,7 @@ Edit `styles/global.css`:
 
 ```css
 :root {
-  --primary-color: #E30B5C; /* Change this */
+  --primary-color: #e30b5c; /* Change this */
 }
 ```
 
@@ -260,11 +264,12 @@ Edit `scripts/api-client.js` and add to `mockTemplates`:
 
 ## 📄 License
 
-Copyright © 2025 ZENU. All rights reserved.
+Copyright © 2026 ZENU. All rights reserved.
 
 ## 👥 Support
 
 For support, feature requests, or bug reports:
+
 - Email: support@zenu.app
 - Documentation: [docs.zenu.app](https://docs.zenu.app)
 
@@ -278,4 +283,4 @@ For support, feature requests, or bug reports:
 
 **Made with ❤️ for Radio Presenters**
 
-*Transform your broadcasting with ZENU - Your Personal Digital Producer*
+_Transform your broadcasting with ZENU - Your Personal Digital Producer_

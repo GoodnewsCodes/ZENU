@@ -1,234 +1,376 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ZENU Dashboard - Manage your scripts, news, and broadcasting workflow">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="ZENU Dashboard - Manage your scripts, news, and broadcasting workflow"
+    />
     <title>Dashboard - ZENU</title>
-    
-    <link rel="stylesheet" href="styles/global.css">
-    <link rel="stylesheet" href="styles/navbar.css">
-    <link rel="stylesheet" href="styles/footer.css">
-    <link rel="stylesheet" href="styles/dashboard.css">
+
+    <link rel="stylesheet" href="styles/global.css" />
+    <link rel="stylesheet" href="styles/navbar.css" />
+    <link rel="stylesheet" href="styles/footer.css" />
+    <link rel="stylesheet" href="styles/dashboard.css" />
     <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="manifest" href="site.webmanifest">
-</head>
-<body>
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="manifest" href="site.webmanifest" />
+  </head>
+  <body>
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
-        <div class="navbar-container">
-            <a href="index.html" class="navbar-logo">
-                <div class="logo-icon"><img src="zenu.png" alt="Z"></div>
-                <span class="logo-text">ZENU</span>
-            </a>
-            
-            <ul class="navbar-menu" id="navbarMenu">
-                <li><a href="index.html" class="navbar-link">Home</a></li>
-                <li><a href="dashboard.html" class="navbar-link active">Dashboard</a></li>
-                <li><a href="news-curator.html" class="navbar-link">News Curator</a></li>
-                <li><a href="script-editor.html" class="navbar-link">Script Editor</a></li>
-                <li><a href="teleprompter.html" class="navbar-link">Teleprompter</a></li>
-                <li><a href="profile.html" class="navbar-link">Profile</a></li>
-            </ul>
-            
-            <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
+      <div class="navbar-container">
+        <a href="index.html" class="navbar-logo">
+          <div class="logo-icon"><img src="zenu.png" alt="Z" /></div>
+          <span class="logo-text">ZENU</span>
+        </a>
+
+        <ul class="navbar-menu" id="navbarMenu">
+          <li><a href="index.html" class="navbar-link">Home</a></li>
+          <li>
+            <a href="dashboard.html" class="navbar-link active">Dashboard</a>
+          </li>
+          <li>
+            <a href="news-curator.html" class="navbar-link">News Curator</a>
+          </li>
+          <li>
+            <a href="script-editor.html" class="navbar-link">Script Editor</a>
+          </li>
+          <li>
+            <a href="teleprompter.html" class="navbar-link">Teleprompter</a>
+          </li>
+          <li><a href="profile.html" class="navbar-link">Profile</a></li>
+        </ul>
+
+        <button
+          class="navbar-toggle"
+          id="navbarToggle"
+          aria-label="Toggle navigation"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </nav>
 
     <!-- Dashboard Content -->
     <div class="dashboard-wrapper">
-        <div class="container-fluid">
-            <!-- Welcome Section -->
-            <div class="dashboard-header">
-                <div class="welcome-section">
-                    <h1 class="dashboard-title">Welcome back, <span data-user-name>User</span>!</h1>
-                    <p class="dashboard-subtitle">Ready to create amazing content for <span data-show-name>your show</span>?</p>
-                </div>
-                <div class="quick-actions">
-                    <a href="script-editor.html" class="btn btn-primary">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path d="M10 5V15M5 10H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                        New Script
-                    </a>
-                    <a href="news-curator.html" class="btn btn-secondary">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <rect x="3" y="4" width="14" height="12" rx="1" stroke="currentColor" stroke-width="2"/>
-                            <path d="M3 8H17M7 4V8" stroke="currentColor" stroke-width="2"/>
-                        </svg>
-                        Curate News
-                    </a>
-                </div>
-            </div>
-
-            <!-- Stats Grid -->
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #E30B5C 0%, #FF1493 100%);">
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                            <path d="M8 12H24M8 16H24M8 20H16" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <div class="stat-info">
-                        <div class="stat-value" id="totalScripts">0</div>
-                        <div class="stat-label">Total Scripts</div>
-                    </div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #10b981 0%, #34d399 100%);">
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                            <path d="M16 8V24M16 8L12 12M16 8L20 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <div class="stat-info">
-                        <div class="stat-value" id="thisWeek">0</div>
-                        <div class="stat-label">This Week</div>
-                    </div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);">
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                            <rect x="6" y="6" width="20" height="20" rx="2" stroke="white" stroke-width="2"/>
-                            <path d="M6 12H26M12 6V12" stroke="white" stroke-width="2"/>
-                        </svg>
-                    </div>
-                    <div class="stat-info">
-                        <div class="stat-value" id="newsItems">0</div>
-                        <div class="stat-label">News Curated</div>
-                    </div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);">
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                            <path d="M16 6L18 14H26L20 19L22 27L16 22L10 27L12 19L6 14H14L16 6Z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <div class="stat-info">
-                        <div class="stat-value">98%</div>
-                        <div class="stat-label">Quality Score</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Main Content Grid -->
-            <div class="dashboard-grid">
-                <!-- Recent Scripts -->
-                <div class="dashboard-section">
-                    <div class="section-header">
-                        <h2 class="section-title">Recent Scripts</h2>
-                        <a href="script-editor.html" class="section-link">View All →</a>
-                    </div>
-                    <div class="scripts-list" id="scriptsList">
-                        <!-- Scripts will be loaded here -->
-                        <div class="empty-state">
-                            <div class="empty-icon">📝</div>
-                            <p>No scripts yet. Create your first one!</p>
-                            <a href="script-editor.html" class="btn btn-primary">Create Script</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Templates -->
-                <div class="dashboard-section">
-                    <div class="section-header">
-                        <h2 class="section-title">Quick Templates</h2>
-                    </div>
-                    <div class="templates-grid" id="templatesList">
-                        <div class="template-card">
-                            <div class="template-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor"><path d="M6 2h12l2 4v14c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V4l2-2z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
-                            <h3 class="template-name">Morning Show</h3>
-                            <p class="template-desc">Perfect for morning drive shows</p>
-                            <a href="script-editor.html?template=morning" class="btn btn-sm btn-secondary">Use Template</a>
-                        </div>
-
-                        <div class="template-card">
-                            <div class="template-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 8h18M7 4v4M17 4v4" stroke="white" stroke-width="2"/></svg></div>
-                            <h3 class="template-name">News Bulletin</h3>
-                            <p class="template-desc">Quick news updates</p>
-                            <a href="script-editor.html?template=news" class="btn btn-sm btn-secondary">Use Template</a>
-                        </div>
-
-                        <div class="template-card">
-                            <div class="template-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
-                            <h3 class="template-name">Talk Show</h3>
-                            <p class="template-desc">Interview and discussion format</p>
-                            <a href="script-editor.html?template=talk" class="btn btn-sm btn-secondary">Use Template</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Activity Feed -->
-            <div class="dashboard-section">
-                <div class="section-header">
-                    <h2 class="section-title">Recent Activity</h2>
-                </div>
-                <div class="activity-feed" id="activityFeed">
-                    <div class="activity-item">
-                        <div class="activity-icon">✅</div>
-                        <div class="activity-content">
-                            <div class="activity-text">Profile setup completed</div>
-                            <div class="activity-time">Just now</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="container-fluid">
+        <!-- Welcome Section -->
+        <div class="dashboard-header">
+          <div class="welcome-section">
+            <h1 class="dashboard-title">
+              Welcome back, <span data-user-name>User</span>!
+            </h1>
+            <p class="dashboard-subtitle">
+              Ready to create amazing content for
+              <span data-show-name>your show</span>?
+            </p>
+          </div>
+          <div class="quick-actions">
+            <a href="script-editor.html" class="btn btn-primary">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path
+                  d="M10 5V15M5 10H15"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+              New Script
+            </a>
+            <a href="news-curator.html" class="btn btn-secondary">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <rect
+                  x="3"
+                  y="4"
+                  width="14"
+                  height="12"
+                  rx="1"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+                <path
+                  d="M3 8H17M7 4V8"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+              </svg>
+              Curate News
+            </a>
+          </div>
         </div>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div
+              class="stat-icon"
+              style="
+                background: linear-gradient(135deg, #e30b5c 0%, #ff1493 100%);
+              "
+            >
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <path
+                  d="M8 12H24M8 16H24M8 20H16"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <div class="stat-info">
+              <div class="stat-value" id="totalScripts">0</div>
+              <div class="stat-label">Total Scripts</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div
+              class="stat-icon"
+              style="
+                background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+              "
+            >
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <path
+                  d="M16 8V24M16 8L12 12M16 8L20 12"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div class="stat-info">
+              <div class="stat-value" id="thisWeek">0</div>
+              <div class="stat-label">This Week</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div
+              class="stat-icon"
+              style="
+                background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+              "
+            >
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <rect
+                  x="6"
+                  y="6"
+                  width="20"
+                  height="20"
+                  rx="2"
+                  stroke="white"
+                  stroke-width="2"
+                />
+                <path d="M6 12H26M12 6V12" stroke="white" stroke-width="2" />
+              </svg>
+            </div>
+            <div class="stat-info">
+              <div class="stat-value" id="newsItems">0</div>
+              <div class="stat-label">News Curated</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div
+              class="stat-icon"
+              style="
+                background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+              "
+            >
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <path
+                  d="M16 6L18 14H26L20 19L22 27L16 22L10 27L12 19L6 14H14L16 6Z"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div class="stat-info">
+              <div class="stat-value">98%</div>
+              <div class="stat-label">Quality Score</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="dashboard-grid">
+          <!-- Recent Scripts -->
+          <div class="dashboard-section">
+            <div class="section-header">
+              <h2 class="section-title">Recent Scripts</h2>
+              <a href="script-editor.html" class="section-link">View All →</a>
+            </div>
+            <div class="scripts-list" id="scriptsList">
+              <!-- Scripts will be loaded here -->
+              <div class="empty-state">
+                <div class="empty-icon">📝</div>
+                <p>No scripts yet. Create your first one!</p>
+                <a href="script-editor.html" class="btn btn-primary"
+                  >Create Script</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Templates -->
+          <div class="dashboard-section">
+            <div class="section-header">
+              <h2 class="section-title">Quick Templates</h2>
+            </div>
+            <div class="templates-grid" id="templatesList">
+              <div class="template-card">
+                <div class="template-icon">
+                  <svg
+                    width="48"
+                    height="48"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M6 2h12l2 4v14c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V4l2-2z"
+                    />
+                    <path d="M8 8h8M8 12h8M8 16h5" />
+                  </svg>
+                </div>
+                <h3 class="template-name">Morning Show</h3>
+                <p class="template-desc">Perfect for morning drive shows</p>
+                <a
+                  href="script-editor.html?template=morning"
+                  class="btn btn-sm btn-secondary"
+                  >Use Template</a
+                >
+              </div>
+
+              <div class="template-card">
+                <div class="template-icon">
+                  <svg
+                    width="48"
+                    height="48"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <rect x="3" y="4" width="18" height="16" rx="2" />
+                    <path
+                      d="M3 8h18M7 4v4M17 4v4"
+                      stroke="white"
+                      stroke-width="2"
+                    />
+                  </svg>
+                </div>
+                <h3 class="template-name">News Bulletin</h3>
+                <p class="template-desc">Quick news updates</p>
+                <a
+                  href="script-editor.html?template=news"
+                  class="btn btn-sm btn-secondary"
+                  >Use Template</a
+                >
+              </div>
+
+              <div class="template-card">
+                <div class="template-icon">
+                  <svg
+                    width="48"
+                    height="48"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <circle cx="12" cy="12" r="6" />
+                    <circle cx="12" cy="12" r="2" />
+                  </svg>
+                </div>
+                <h3 class="template-name">Talk Show</h3>
+                <p class="template-desc">Interview and discussion format</p>
+                <a
+                  href="script-editor.html?template=talk"
+                  class="btn btn-sm btn-secondary"
+                  >Use Template</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Activity Feed -->
+        <div class="dashboard-section">
+          <div class="section-header">
+            <h2 class="section-title">Recent Activity</h2>
+          </div>
+          <div class="activity-feed" id="activityFeed">
+            <div class="activity-item">
+              <div class="activity-icon">✅</div>
+              <div class="activity-content">
+                <div class="activity-text">Profile setup completed</div>
+                <div class="activity-time">Just now</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="index.html" class="footer-logo">
-                        <div class="footer-logo-icon">Z</div>
-                        <span>ZENU</span>
-                    </a>
-                    <p class="footer-description">
-                        Your personal AI-powered digital producer for radio presenters.
-                    </p>
-                </div>
-                
-                <div class="footer-column">
-                    <h4 class="footer-title">Product</h4>
-                    <ul class="footer-links">
-                        <li><a href="dashboard.html" class="footer-link">Dashboard</a></li>
-                        <li><a href="news-curator.html" class="footer-link">News Curator</a></li>
-                        <li><a href="script-editor.html" class="footer-link">Script Editor</a></li>
-                        <li><a href="teleprompter.html" class="footer-link">Teleprompter</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h4 class="footer-title">Support</h4>
-                    <ul class="footer-links">
-                        <li><a href="#" class="footer-link">Help Center</a></li>
-                        <li><a href="#" class="footer-link">Contact Us</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p class="footer-copyright">© 2025 ZENU. All rights reserved.</p>
-            </div>
+      <div class="footer-container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="footer-logo">
+              <div class="footer-logo-icon">Z</div>
+              <span>ZENU</span>
+            </a>
+            <p class="footer-description">
+              Your personal AI-powered digital producer for radio presenters.
+            </p>
+          </div>
+
+          <div class="footer-column">
+            <h4 class="footer-title">Product</h4>
+            <ul class="footer-links">
+              <li>
+                <a href="dashboard.html" class="footer-link">Dashboard</a>
+              </li>
+              <li>
+                <a href="news-curator.html" class="footer-link">News Curator</a>
+              </li>
+              <li>
+                <a href="script-editor.html" class="footer-link"
+                  >Script Editor</a
+                >
+              </li>
+              <li>
+                <a href="teleprompter.html" class="footer-link">Teleprompter</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4 class="footer-title">Support</h4>
+            <ul class="footer-links">
+              <li><a href="#" class="footer-link">Help Center</a></li>
+              <li><a href="#" class="footer-link">Contact Us</a></li>
+            </ul>
+          </div>
         </div>
+
+        <div class="footer-bottom">
+          <p class="footer-copyright">© 2026 ZENU. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
 
     <script src="scripts/navigation.js"></script>
     <script src="scripts/auth.js"></script>
     <script src="scripts/api-client.js"></script>
     <script src="scripts/dashboard.js"></script>
-</body>
+  </body>
 </html>

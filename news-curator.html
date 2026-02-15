@@ -1,57 +1,113 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>News Curator - ZENU</title>
-    <link rel="stylesheet" href="styles/global.css">
-    <link rel="stylesheet" href="styles/navbar.css">
-    <link rel="stylesheet" href="styles/footer.css">
-    <link rel="stylesheet" href="styles/news-curator.css">
+    <link rel="stylesheet" href="styles/global.css" />
+    <link rel="stylesheet" href="styles/navbar.css" />
+    <link rel="stylesheet" href="styles/footer.css" />
+    <link rel="stylesheet" href="styles/news-curator.css" />
     <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  </head>
+  <body>
     <nav class="navbar" id="navbar">
-        <div class="navbar-container">
-            <a href="index.html" class="navbar-logo">
-                <div class="logo-icon"><img src="zenu.png" alt="Z"></div>
-                <span class="logo-text">ZENU</span>
-            </a>
-            <ul class="navbar-menu" id="navbarMenu">
-                <li><a href="index.html" class="navbar-link">Home</a></li>
-                <li><a href="dashboard.html" class="navbar-link">Dashboard</a></li>
-                <li><a href="news-curator.html" class="navbar-link active">News Curator</a></li>
-                <li><a href="script-editor.html" class="navbar-link">Script Editor</a></li>
-                <li><a href="teleprompter.html" class="navbar-link">Teleprompter</a></li>
-                <li><a href="profile.html" class="navbar-link">Profile</a></li>
-            </ul>
-            <button class="navbar-toggle" id="navbarToggle"><span></span><span></span><span></span></button>
-        </div>
+      <div class="navbar-container">
+        <a href="index.html" class="navbar-logo">
+          <div class="logo-icon"><img src="zenu.png" alt="Z" /></div>
+          <span class="logo-text">ZENU</span>
+        </a>
+        <ul class="navbar-menu" id="navbarMenu">
+          <li><a href="index.html" class="navbar-link">Home</a></li>
+          <li><a href="dashboard.html" class="navbar-link">Dashboard</a></li>
+          <li>
+            <a href="news-curator.html" class="navbar-link active"
+              >News Curator</a
+            >
+          </li>
+          <li>
+            <a href="script-editor.html" class="navbar-link">Script Editor</a>
+          </li>
+          <li>
+            <a href="teleprompter.html" class="navbar-link">Teleprompter</a>
+          </li>
+          <li><a href="profile.html" class="navbar-link">Profile</a></li>
+        </ul>
+        <button class="navbar-toggle" id="navbarToggle">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </nav>
 
-    <div class="container" style="padding-top: 100px; min-height: 80vh;">
+    <div class="container" style="padding-top: 100px; min-height: 80vh">
+      <div class="header-section text-center" style="margin-bottom: 3rem">
         <h1>News Curator</h1>
-        <p class="text-center" style="color: var(--medium-gray); margin: 2rem 0;">Fetch and curate news from multiple sources for your show.</p>
-        <div class="card" style="max-width: 800px; margin: 0 auto;">
-            <h3>Coming Soon</h3>
-            <p>The News Curator feature is under development. You'll soon be able to:</p>
-            <ul style="margin-left: 2rem; color: var(--medium-gray);">
-                <li>Fetch news from Vanguard, Punch, Arise News</li>
-                <li>Add custom RSS feeds</li>
-                <li>Filter by keywords and topics</li>
-                <li>Generate AI summaries of news stories</li>
-            </ul>
-            <div style="margin-top: 2rem;">
-                <a href="dashboard.html" class="btn btn-primary">Back to Dashboard</a>
-            </div>
+        <p style="color: var(--medium-gray)">
+          Fetch, curate, and summarize news for your radio scripts.
+        </p>
+      </div>
+
+      <section
+        class="fetch-input-section card"
+        style="max-width: 800px; margin: 0 auto 3rem auto"
+      >
+        <div class="input-group">
+          <input
+            type="text"
+            id="articleUrl"
+            placeholder="Enter news article URL (e.g., Vanguard, Punch...)"
+            style="
+              flex: 1;
+              padding: 0.8rem;
+              border-radius: 8px;
+              border: 1px solid var(--border-color);
+              background: var(--card-bg);
+              color: var(--text-color);
+            "
+          />
+          <button
+            id="fetchBtn"
+            class="btn btn-primary"
+            style="margin-left: 1rem"
+          >
+            Fetch News
+          </button>
         </div>
+        <div
+          id="fetchStatus"
+          style="margin-top: 0.5rem; font-size: 0.9rem"
+        ></div>
+      </section>
+
+      <section class="articles-section">
+        <h2 style="margin-bottom: 1.5rem">Recent Articles</h2>
+        <div
+          id="articlesList"
+          class="articles-grid"
+          style="
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+          "
+        >
+          <!-- Articles will be injected here -->
+          <div
+            class="loading-state text-center"
+            style="grid-column: 1/-1; padding: 3rem; color: var(--medium-gray)"
+          >
+            Loading articles...
+          </div>
+        </div>
+      </section>
     </div>
 
+    <!-- Script src="scripts/api-client.js" is assumed to be available globally or added before news-curator.js -->
+    <script src="scripts/api-client.js"></script>
     <script src="scripts/navigation.js"></script>
     <script src="scripts/news-curator.js"></script>
-</body>
+  </body>
 </html>

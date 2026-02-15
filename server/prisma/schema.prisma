@@ -1,0 +1,46 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Article {
+  id          String   @id @default(cuid())
+  title       String
+  content     String
+  summary     String?
+  source      String
+  url         String   @unique
+  category    String?
+  status      String   @default("pending") // pending, curated, archived
+  publishedAt DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  scripts     Script[]
+}
+
+model Script {
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  voiceId   String?
+  articleId String?
+  article   Article? @relation(fields: [articleId], references: [id])
+  duration  Int?     // estimated duration in seconds
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Settings {
+  id            Int      @id @default(1)
+  stationName   String   @default("ZENU Radio")
+  broadcasterName String @default("AI Host")
+  newsSources   String   @default("[]") // JSON string of sources
+  updatedAt     DateTime @updatedAt
+}
