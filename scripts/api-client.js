@@ -11,19 +11,15 @@ class ZenuAPI {
 
   async request(endpoint, options = {}) {
     const url = `${this.baseURL}${endpoint}`;
-    const defaultOptions = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
+
+    const headers = { ...options.headers };
+    if (options.body) {
+      headers["Content-Type"] = "application/json";
+    }
 
     const config = {
-      ...defaultOptions,
       ...options,
-      headers: {
-        ...defaultOptions.headers,
-        ...options.headers,
-      },
+      headers,
     };
 
     try {
@@ -61,11 +57,60 @@ class ZenuAPI {
     });
   }
 
+  async autoFetchArticles(limit = 10) {
+    return this.request("/articles/auto-fetch", {
+      method: "POST",
+      body: JSON.stringify({ limit }),
+    });
+  }
+
+  async fetchFullContent(articleId) {
+    return this.request(`/articles/${articleId}/fetch-full`, {
+      method: "POST",
+      body: JSON.stringify({}),
+    });
+  }
+
   // Scripts
-  async generateScript(articleId, prompt) {
+  async getScripts() {
+    return this.request("/scripts");
+  }
+
+  async getScript(id) {
+    return this.request(`/scripts/${id}`);
+  }
+
+  async createScript(data) {
+    return this.request("/scripts", {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+  }
+
+  async updateScript(id, data) {
+    return this.request(`/scripts/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(data),
+    });
+  }
+
+  async deleteScript(id) {
+    return this.request(`/scripts/${id}`, {
+      method: "DELETE",
+    });
+  }
+
+  async generateScript(articleId, prompt, options = {}) {
     return this.request("/scripts/generate", {
       method: "POST",
-      body: JSON.stringify({ articleId, prompt }),
+      body: JSON.stringify({
+        articleId,
+        prompt,
+        hostName: options.hostName,
+        startCatchphrase: options.startCatchphrase,
+        endCatchphrase: options.endCatchphrase,
+        catchphrasePosition: options.catchphrasePosition,
+      }),
     });
   }
 }

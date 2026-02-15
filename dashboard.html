@@ -208,7 +208,47 @@
           <div class="dashboard-section">
             <div class="section-header">
               <h2 class="section-title">Recent Scripts</h2>
+              <div class="bulk-actions" id="bulkActions" style="display: none">
+                <span class="selection-count" id="selectionCount"
+                  >0 selected</span
+                >
+                <button
+                  class="btn btn-sm btn-danger"
+                  onclick="deleteSelectedScripts()"
+                >
+                  Delete Selected
+                </button>
+              </div>
               <a href="script-editor.html" class="section-link">View All →</a>
+            </div>
+            <div
+              class="list-controls"
+              id="listControls"
+              style="
+                display: none;
+                padding: var(--space-sm) var(--space-lg);
+                border-bottom: 1px solid var(--light-gray);
+                display: flex;
+                align-items: center;
+                gap: var(--space-md);
+              "
+            >
+              <input
+                type="checkbox"
+                id="selectAllCheckbox"
+                onclick="toggleSelectAll(this)"
+                style="width: 18px; height: 18px; cursor: pointer"
+              />
+              <label
+                for="selectAllCheckbox"
+                style="
+                  font-size: var(--text-sm);
+                  color: var(--medium-gray);
+                  cursor: pointer;
+                  font-weight: 500;
+                "
+                >Select All</label
+              >
             </div>
             <div class="scripts-list" id="scriptsList">
               <!-- Scripts will be loaded here -->

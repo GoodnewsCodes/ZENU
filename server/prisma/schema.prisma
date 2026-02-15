@@ -13,13 +13,14 @@ datasource db {
 model Article {
   id          String   @id @default(cuid())
   title       String
-  content     String
+  snippet     String?
+  content     String?
   summary     String?
   source      String
   url         String   @unique
   category    String?
   status      String   @default("pending") // pending, curated, archived
-  publishedAt DateTime @default(now())
+  publishedAt DateTime?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   scripts     Script[]

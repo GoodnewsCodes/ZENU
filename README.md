@@ -281,6 +281,11 @@ For support, feature requests, or bug reports:
 
 ---
 
+## Contributors
+
+- [Goodnews Anwana](https://github.com/GoodnewsCodes)
+- [Emmanuel Raymond](https://github.com/rashfordpee)
+
 **Made with ❤️ for Radio Presenters**
 
 _Transform your broadcasting with ZENU - Your Personal Digital Producer_

@@ -1,57 +1,335 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile - ZENU</title>
-    <link rel="stylesheet" href="styles/global.css">
-    <link rel="stylesheet" href="styles/navbar.css">
-    <link rel="stylesheet" href="styles/footer.css">
-    <link rel="stylesheet" href="styles/profile.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Profile - ZENU</title>
+    <link rel="stylesheet" href="styles/global.css" />
+    <link rel="stylesheet" href="styles/navbar.css" />
+    <link rel="stylesheet" href="styles/footer.css" />
+    <link rel="stylesheet" href="styles/profile.css" />
     <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  </head>
+  <body>
     <nav class="navbar" id="navbar">
-        <div class="navbar-container">
-            <a href="index.html" class="navbar-logo">
-                <div class="logo-icon"><img src="zenu.png" alt="Z"></div>
-                <span class="logo-text">ZENU</span>
-            </a>
-            <ul class="navbar-menu" id="navbarMenu">
-                <li><a href="index.html" class="navbar-link">Home</a></li>
-                <li><a href="dashboard.html" class="navbar-link">Dashboard</a></li>
-                <li><a href="news-curator.html" class="navbar-link">News Curator</a></li>
-                <li><a href="script-editor.html" class="navbar-link">Script Editor</a></li>
-                <li><a href="teleprompter.html" class="navbar-link">Teleprompter</a></li>
-                <li><a href="profile.html" class="navbar-link active">Profile</a></li>
-            </ul>
-            <button class="navbar-toggle" id="navbarToggle"><span></span><span></span><span></span></button>
-        </div>
+      <div class="navbar-container">
+        <a href="index.html" class="navbar-logo">
+          <div class="logo-icon"><img src="zenu.png" alt="Z" /></div>
+          <span class="logo-text">ZENU</span>
+        </a>
+        <ul class="navbar-menu" id="navbarMenu">
+          <li><a href="index.html" class="navbar-link">Home</a></li>
+          <li><a href="dashboard.html" class="navbar-link">Dashboard</a></li>
+          <li>
+            <a href="news-curator.html" class="navbar-link">News Curator</a>
+          </li>
+          <li>
+            <a href="script-editor.html" class="navbar-link">Script Editor</a>
+          </li>
+          <li>
+            <a href="teleprompter.html" class="navbar-link">Teleprompter</a>
+          </li>
+          <li><a href="profile.html" class="navbar-link active">Profile</a></li>
+        </ul>
+        <button class="navbar-toggle" id="navbarToggle">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </nav>
 
-    <div class="container" style="padding-top: 100px; min-height: 80vh;">
-        <h1>Profile Settings</h1>
-        <p class="text-center" style="color: var(--medium-gray); margin: 2rem 0;">Manage your presenter profile and preferences.</p>
-        <div class="card" style="max-width: 800px; margin: 0 auto;">
-            <h3>Coming Soon</h3>
-            <p>The Profile page is under development. You'll soon be able to:</p>
-            <ul style="margin-left: 2rem; color: var(--medium-gray);">
-                <li>Update your personal information</li>
-                <li>Manage voice style preferences</li>
-                <li>Configure integrations (Email, Slack, WhatsApp)</li>
-                <li>View account settings</li>
-            </ul>
-            <div style="margin-top: 2rem;">
-                <a href="dashboard.html" class="btn btn-primary">Back to Dashboard</a>
+    <main class="profile-wrapper">
+      <div class="container">
+        <header class="profile-header">
+          <h1>Profile Settings</h1>
+          <p>Manage your presenter identity and application preferences</p>
+        </header>
+
+        <div class="profile-container">
+          <!-- Sidebar -->
+          <aside class="profile-sidebar">
+            <div class="profile-card-mini">
+              <div class="avatar-container">
+                <div class="profile-avatar" id="avatarDisplay">JD</div>
+                <button class="edit-avatar-btn" title="Change Avatar">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"
+                    />
+                    <circle cx="12" cy="13" r="4" />
+                  </svg>
+                </button>
+              </div>
+              <div class="profile-name-display" id="displayName">John Doe</div>
+              <div class="profile-role-display" id="displayShow">
+                Morning Drive Host
+              </div>
+              <div class="badge">Pro Account</div>
             </div>
+
+            <ul class="profile-nav">
+              <li class="profile-nav-item active">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+                Account Info
+              </li>
+              <li class="profile-nav-item">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"
+                  />
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                  <line x1="12" y1="19" x2="12" y2="23" />
+                  <line x1="8" y1="23" x2="16" y2="23" />
+                </svg>
+                Voice & Style
+              </li>
+              <li class="profile-nav-item">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <circle cx="12" cy="12" r="3" />
+                  <path
+                    d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+                  />
+                </svg>
+                Preferences
+              </li>
+            </ul>
+          </aside>
+
+          <!-- Main Content -->
+          <div class="profile-main">
+            <!-- Section 1: Personal Info -->
+            <div class="settings-card" id="account-info">
+              <div class="settings-header">
+                <h2 class="settings-title">
+                  <span class="settings-icon">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                      <circle cx="12" cy="7" r="4" />
+                    </svg>
+                  </span>
+                  Personal Information
+                </h2>
+              </div>
+
+              <form id="profileForm">
+                <div class="settings-grid">
+                  <div class="form-group">
+                    <label for="fullName" class="form-label">Full Name</label>
+                    <input
+                      type="text"
+                      id="fullName"
+                      class="form-input"
+                      placeholder="Enter your full name"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="showName" class="form-label">Show Name</label>
+                    <input
+                      type="text"
+                      id="showName"
+                      class="form-input"
+                      placeholder="Enter show name"
+                    />
+                  </div>
+
+                  <div class="form-group full-width">
+                    <label class="form-label">Tone of Voice</label>
+                    <div class="radio-grid">
+                      <label class="radio-card">
+                        <input type="radio" name="tone" value="professional" />
+                        <div class="radio-content">
+                          <div class="radio-icon">
+                            <svg
+                              width="32"
+                              height="32"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                            >
+                              <path d="M12 3v18M8 7l4-4 4 4M8 17h8" />
+                            </svg>
+                          </div>
+                          <div class="radio-title">Professional</div>
+                          <div class="radio-desc">Formal and authoritative</div>
+                        </div>
+                      </label>
+
+                      <label class="radio-card">
+                        <input type="radio" name="tone" value="energetic" />
+                        <div class="radio-content">
+                          <div class="radio-icon">
+                            <svg
+                              width="32"
+                              height="32"
+                              viewBox="0 0 24 24"
+                              fill="currentColor"
+                            >
+                              <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z" />
+                            </svg>
+                          </div>
+                          <div class="radio-title">Energetic</div>
+                          <div class="radio-desc">Upbeat and dynamic</div>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="form-group full-width">
+                    <label class="form-label">Punchline Settings</label>
+                    <div
+                      class="settings-grid"
+                      style="
+                        grid-template-columns: 1fr 1fr;
+                        gap: var(--space-md);
+                      "
+                    >
+                      <div>
+                        <label
+                          for="startCatchphrase"
+                          class="form-label"
+                          style="font-size: var(--text-sm)"
+                          >Start Punchline</label
+                        >
+                        <input
+                          type="text"
+                          id="startCatchphrase"
+                          class="form-input"
+                          placeholder="Welcome message..."
+                        />
+                      </div>
+                      <div>
+                        <label
+                          for="endCatchphrase"
+                          class="form-label"
+                          style="font-size: var(--text-sm)"
+                          >End Punchline</label
+                        >
+                        <input
+                          type="text"
+                          id="endCatchphrase"
+                          class="form-input"
+                          placeholder="Sign-off message..."
+                        />
+                      </div>
+                    </div>
+                    <div class="mt-md">
+                      <label
+                        for="catchphrasePosition"
+                        class="form-label"
+                        style="font-size: var(--text-sm)"
+                        >Positioning</label
+                      >
+                      <select id="catchphrasePosition" class="form-select">
+                        <option value="both">Both Start & End</option>
+                        <option value="start">Start Only</option>
+                        <option value="end">End Only</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group full-width">
+                    <label class="form-label" id="sources-label"
+                      >News Sources</label
+                    >
+                    <div class="checkbox-grid">
+                      <label class="checkbox-card">
+                        <input
+                          type="checkbox"
+                          name="sources"
+                          value="vanguard"
+                        />
+                        <span class="checkbox-label">Vanguard</span>
+                      </label>
+                      <label class="checkbox-card">
+                        <input type="checkbox" name="sources" value="punch" />
+                        <span class="checkbox-label">Punch</span>
+                      </label>
+                      <label class="checkbox-card">
+                        <input type="checkbox" name="sources" value="arise" />
+                        <span class="checkbox-label">Arise News</span>
+                      </label>
+                      <label class="checkbox-card">
+                        <input type="checkbox" name="sources" value="bbc" />
+                        <span class="checkbox-label">BBC</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-actions">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    onclick="window.location.href = 'dashboard.html'"
+                  >
+                    Cancel
+                  </button>
+                  <button type="submit" class="btn btn-primary" id="saveBtn">
+                    Save Changes
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
-    </div>
+      </div>
+    </main>
+
+    <!-- Notification Toast -->
+    <div
+      id="notification"
+      style="
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+        display: none;
+      "
+    ></div>
 
     <script src="scripts/navigation.js"></script>
     <script src="scripts/profile.js"></script>
-</body>
+  </body>
 </html>

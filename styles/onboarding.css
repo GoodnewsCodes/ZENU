@@ -401,35 +401,59 @@
   .onboarding-wrapper {
     padding: 80px 0 var(--space-2xl);
   }
-  
+
   .progress-steps {
     gap: var(--space-xs);
   }
-  
+
   .step-circle {
     width: 40px;
     height: 40px;
     font-size: var(--text-sm);
   }
-  
+
   .step-label {
     font-size: var(--text-xs);
   }
-  
+
   .onboarding-form {
     padding: var(--space-xl);
   }
-  
+
   .radio-grid,
   .checkbox-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .form-navigation {
     flex-direction: column-reverse;
   }
-  
+
   .form-navigation .btn {
     width: 100%;
   }
+}
+
+/* Punchline Config */
+.catchphrase-config {
+  background: var(--off-white);
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--light-gray);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-top: var(--space-sm);
+}
+
+.config-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.config-label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--dark-navy);
 }

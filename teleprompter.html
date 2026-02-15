@@ -1,57 +1,180 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Teleprompter - ZENU</title>
-    <link rel="stylesheet" href="styles/global.css">
-    <link rel="stylesheet" href="styles/navbar.css">
-    <link rel="stylesheet" href="styles/footer.css">
-    <link rel="stylesheet" href="styles/teleprompter.css">
+    <link rel="stylesheet" href="styles/global.css" />
+    <link rel="stylesheet" href="styles/navbar.css" />
+    <link rel="stylesheet" href="styles/footer.css" />
+    <link rel="stylesheet" href="styles/teleprompter.css" />
     <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="teleprompter-page">
     <nav class="navbar" id="navbar">
-        <div class="navbar-container">
-            <a href="index.html" class="navbar-logo">
-                <div class="logo-icon"><img src="zenu.png" alt="Z"></div>
-                <span class="logo-text">ZENU</span>
-            </a>
-            <ul class="navbar-menu" id="navbarMenu">
-                <li><a href="index.html" class="navbar-link">Home</a></li>
-                <li><a href="dashboard.html" class="navbar-link">Dashboard</a></li>
-                <li><a href="news-curator.html" class="navbar-link">News Curator</a></li>
-                <li><a href="script-editor.html" class="navbar-link">Script Editor</a></li>
-                <li><a href="teleprompter.html" class="navbar-link active">Teleprompter</a></li>
-                <li><a href="profile.html" class="navbar-link">Profile</a></li>
-            </ul>
-            <button class="navbar-toggle" id="navbarToggle"><span></span><span></span><span></span></button>
-        </div>
+      <div class="navbar-container">
+        <a href="index.html" class="navbar-logo">
+          <div class="logo-icon"><img src="zenu.png" alt="Z" /></div>
+          <span class="logo-text">ZENU</span>
+        </a>
+        <ul class="navbar-menu" id="navbarMenu">
+          <li><a href="index.html" class="navbar-link">Home</a></li>
+          <li><a href="dashboard.html" class="navbar-link">Dashboard</a></li>
+          <li>
+            <a href="news-curator.html" class="navbar-link">News Curator</a>
+          </li>
+          <li>
+            <a href="script-editor.html" class="navbar-link">Script Editor</a>
+          </li>
+          <li>
+            <a href="teleprompter.html" class="navbar-link active"
+              >Teleprompter</a
+            >
+          </li>
+          <li><a href="profile.html" class="navbar-link">Profile</a></li>
+        </ul>
+        <button class="navbar-toggle" id="navbarToggle">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </nav>
 
-    <div class="container" style="padding-top: 100px; min-height: 80vh;">
+    <!-- Selection View -->
+    <div
+      id="selection-view"
+      class="container"
+      style="padding-top: 100px; min-height: 80vh"
+    >
+      <div class="view-header">
         <h1>Teleprompter</h1>
-        <p class="text-center" style="color: var(--medium-gray); margin: 2rem 0;">Professional teleprompter for your broadcasts.</p>
-        <div class="card" style="max-width: 800px; margin: 0 auto;">
-            <h3>Coming Soon</h3>
-            <p>The Teleprompter feature is under development. You'll soon be able to:</p>
-            <ul style="margin-left: 2rem; color: var(--medium-gray);">
-                <li>Display scripts in full-screen mode</li>
-                <li>Adjust scroll speed and font size</li>
-                <li>Use pacing indicators and timers</li>
-                <li>Control playback with keyboard shortcuts</li>
-            </ul>
-            <div style="margin-top: 2rem;">
-                <a href="dashboard.html" class="btn btn-primary">Back to Dashboard</a>
-            </div>
+        <p>Select a script to start your broadcast or paste a new one.</p>
+      </div>
+
+      <div class="prompter-grid">
+        <div class="card">
+          <h3>Saved Scripts</h3>
+          <div id="scripts-list" class="scripts-list">
+            <div class="loading-spinner">Loading scripts...</div>
+          </div>
         </div>
+
+        <div class="card">
+          <h3>Quick Paste</h3>
+          <textarea
+            id="quick-paste"
+            placeholder="Paste your script here..."
+          ></textarea>
+          <button
+            id="start-paste-btn"
+            class="btn btn-primary"
+            style="width: 100%; margin-top: 1rem"
+          >
+            Start Prompter
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Prompter View (Hidden initially) -->
+    <div id="prompter-view" class="prompter-overlay hidden">
+      <div class="prompter-toolbar">
+        <div class="toolbar-left">
+          <button id="exit-prompter" class="btn-icon" title="Exit">
+            <svg viewBox="0 0 24 24" width="24" height="24">
+              <path
+                fill="currentColor"
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+              />
+            </svg>
+          </button>
+          <div class="script-info">
+            <span id="active-script-title">New Script</span>
+          </div>
+        </div>
+
+        <div class="toolbar-center">
+          <button id="restart-btn" class="btn-icon" title="Restart">
+            <svg viewBox="0 0 24 24" width="24" height="24">
+              <path
+                fill="currentColor"
+                d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"
+              />
+            </svg>
+          </button>
+          <button
+            id="play-pause-btn"
+            class="btn-play"
+            title="Play/Pause (Space)"
+          >
+            <svg id="play-icon" viewBox="0 0 24 24" width="32" height="32">
+              <path fill="currentColor" d="M8 5v14l11-7z" />
+            </svg>
+            <svg
+              id="pause-icon"
+              class="hidden"
+              viewBox="0 0 24 24"
+              width="32"
+              height="32"
+            >
+              <path fill="currentColor" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="toolbar-right">
+          <button id="settings-toggle" class="btn-icon" title="Settings">
+            <svg viewBox="0 0 24 24" width="24" height="24">
+              <path
+                fill="currentColor"
+                d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.2-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L3.64 8.87c-.11.2-.06.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.2.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.2.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="prompter-settings hidden" id="settings-panel">
+        <div class="settings-group">
+          <label>Speed: <span id="speed-value">5</span></label>
+          <input type="range" id="speed-control" min="1" max="20" value="5" />
+        </div>
+        <div class="settings-group">
+          <label>Font Size: <span id="font-value">60</span>px</label>
+          <input type="range" id="font-control" min="20" max="150" value="60" />
+        </div>
+        <div class="settings-group row">
+          <label>Mirror</label>
+          <input type="checkbox" id="mirror-control" class="toggle" />
+        </div>
+        <div class="settings-group row">
+          <label>Flip Vertical</label>
+          <input type="checkbox" id="flip-control" class="toggle" />
+        </div>
+      </div>
+
+      <div class="prompter-focus-line"></div>
+
+      <div id="prompter-content-wrapper" class="prompter-content-wrapper">
+        <div id="prompter-text" class="prompter-text">
+          <!-- Script text goes here -->
+        </div>
+      </div>
+
+      <div class="prompter-progress-container">
+        <div id="prompter-progress" class="prompter-progress"></div>
+      </div>
     </div>
 
     <script src="scripts/navigation.js"></script>
     <script src="scripts/teleprompter.js"></script>
-</body>
+  </body>
 </html>

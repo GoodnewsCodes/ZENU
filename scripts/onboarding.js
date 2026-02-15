@@ -141,6 +141,13 @@ document.addEventListener("DOMContentLoaded", function () {
           currentStepElement.querySelectorAll('input[name="sources"]:checked'),
         ).map((cb) => cb.value);
         formData.sources = selectedSources;
+        formData.startCatchphrase =
+          document.getElementById("startCatchphrase").value;
+        formData.endCatchphrase =
+          document.getElementById("endCatchphrase").value;
+        formData.catchphrasePosition = document.getElementById(
+          "catchphrasePosition",
+        ).value;
 
         // Final data save to profile since step 3 is just completion
         saveUserProfile();
@@ -202,6 +209,21 @@ document.addEventListener("DOMContentLoaded", function () {
         );
         if (checkbox) checkbox.checked = true;
       });
+    }
+
+    if (formData.startCatchphrase) {
+      const startInput = document.getElementById("startCatchphrase");
+      if (startInput) startInput.value = formData.startCatchphrase;
+    }
+
+    if (formData.endCatchphrase) {
+      const endInput = document.getElementById("endCatchphrase");
+      if (endInput) endInput.value = formData.endCatchphrase;
+    }
+
+    if (formData.catchphrasePosition) {
+      const posSelect = document.getElementById("catchphrasePosition");
+      if (posSelect) posSelect.value = formData.catchphrasePosition;
     }
   }
 });

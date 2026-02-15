@@ -19,6 +19,30 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
+/* Navbar Dark Theme */
+.navbar-dark {
+  background: rgba(10, 14, 26, 0.9);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: none;
+}
+
+.navbar-dark .navbar-logo {
+  color: var(--white);
+}
+
+.navbar-dark .navbar-link {
+  color: #e5e7eb;
+}
+
+.navbar-dark .navbar-link:hover,
+.navbar-dark .navbar-link.active {
+  color: var(--primary-light);
+}
+
+.navbar-dark.scrolled {
+  background: rgba(10, 14, 26, 0.98);
+}
+
 .navbar-container {
   display: flex;
   align-items: center;
@@ -78,7 +102,7 @@
 }
 
 .navbar-link::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -147,7 +171,7 @@
   .navbar-menu {
     gap: var(--space-lg);
   }
-  
+
   .navbar-link {
     font-size: var(--text-sm);
   }
@@ -157,7 +181,7 @@
   .navbar-toggle {
     display: flex;
   }
-  
+
   .navbar-menu {
     position: fixed;
     top: 70px;
@@ -174,25 +198,25 @@
     visibility: hidden;
     transition: all var(--transition-base);
   }
-  
+
   .navbar-menu.active {
     transform: translateY(0);
     opacity: 1;
     visibility: visible;
   }
-  
+
   .navbar-link {
     width: 100%;
     text-align: center;
     padding: var(--space-md) 0;
     font-size: var(--text-lg);
   }
-  
+
   .navbar-cta {
     margin-left: 0;
     width: 100%;
   }
-  
+
   .navbar-cta .btn {
     width: 100%;
   }

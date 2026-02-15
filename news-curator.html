@@ -55,6 +55,25 @@
         class="fetch-input-section card"
         style="max-width: 800px; margin: 0 auto 3rem auto"
       >
+        <!-- Legal Compliance Notice -->
+        <div
+          style="
+            margin-bottom: 1.5rem;
+            padding: 0.8rem;
+            background: rgba(255, 193, 7, 0.1);
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+            font-size: 0.8rem;
+            color: #5d4601;
+          "
+        >
+          <strong>Legal Compliance & Ethics:</strong> This tool prioritizes
+          official News APIs and RSS feeds. By default, it stores only headlines
+          and snippets. Scraping full content should only be done for personal
+          curation or research. Always provide attribution and link back to
+          original sources.
+        </div>
+
         <div class="input-group">
           <input
             type="text"
@@ -81,6 +100,64 @@
           id="fetchStatus"
           style="margin-top: 0.5rem; font-size: 0.9rem"
         ></div>
+
+        <!-- Auto-fetch Controls -->
+        <div
+          class="auto-fetch-controls"
+          style="
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+          "
+        >
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 1rem;
+            "
+          >
+            <div>
+              <h3 style="margin: 0 0 0.5rem 0; font-size: 1rem">
+                Automatic News Fetching
+              </h3>
+              <p
+                style="margin: 0; font-size: 0.85rem; color: var(--medium-gray)"
+              >
+                Automatically fetch latest news from RSS feeds every 30 minutes
+              </p>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="autoFetchToggle" />
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          <button
+            id="autoFetchBtn"
+            class="btn btn-secondary"
+            style="width: 100%"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              style="margin-right: 0.5rem; vertical-align: middle"
+            >
+              <path
+                d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"
+              />
+            </svg>
+            Fetch Latest News Now
+          </button>
+          <div
+            id="autoFetchStatus"
+            style="margin-top: 0.5rem; font-size: 0.85rem; text-align: center"
+          ></div>
+        </div>
       </section>
 
       <section class="articles-section">
